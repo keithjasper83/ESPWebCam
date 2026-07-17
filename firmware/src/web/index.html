@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPWebCam</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>ESPWebCam</h1>
+        <p id="ip-addr">Connecting…</p>
+        <span id="wifi-state" class="badge badge-warn">●</span>
+      </div>
+
+      <div class="stream-container">
+        <img id="stream" src="" alt="Camera stream">
+        <div id="stream-overlay" class="stream-overlay">Connecting to stream…</div>
+      </div>
+
+      <div class="controls card">
+        <div class="control-group">
+          <label for="resolution">Resolution</label>
+          <select id="resolution">
+            <option value="5">QVGA (320×240)</option>
+            <option value="6">HVGA (480×320)</option>
+            <option value="8" selected>VGA (640×480)</option>
+            <option value="9">SVGA (800×600)</option>
+            <option value="10">XGA (1024×768)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="quality">JPEG Quality: <span id="quality-value">12</span>
+            <small>(4=highest quality, 63=lowest)</small>
+          </label>
+          <input type="range" id="quality" min="4" max="63" value="12">
+        </div>
+
+        <div class="control-group">
+          <label for="brightness">Brightness: <span id="brightness-value">1</span></label>
+          <input type="range" id="brightness" min="-2" max="2" value="1">
+        </div>
+
+        <div class="control-group">
+          <label for="contrast">Contrast: <span id="contrast-value">0</span></label>
+          <input type="range" id="contrast" min="-2" max="2" value="0">
+        </div>
+
+        <div class="control-group">
+          <label for="saturation">Saturation: <span id="saturation-value">0</span></label>
+          <input type="range" id="saturation" min="-2" max="2" value="0">
+        </div>
+
+        <div class="button-group">
+          <button class="btn-primary" onclick="updateSettings()">Apply Settings</button>
+          <button class="btn-secondary" onclick="loadSettings()">Refresh</button>
+        </div>
+
+        <div id="status-text" class="status">Ready</div>
+      </div>
+
+      <div id="doorbell-card" class="card doorbell-card" style="display:none">
+        <span class="doorbell-icon">🔔</span>
+        <span id="doorbell-text">Doorbell pressed!</span>
+      </div>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

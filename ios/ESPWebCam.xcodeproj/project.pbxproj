@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B3ECAD8E81A4CE38C5F20AB /* ESPWebCamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB172A3194CB08BB7C0E9 /* ESPWebCamApp.swift */; };
+		4AFAB3E4BF1847F1840750A1 /* CameraDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4428C1B09786468BB674FE8B /* CameraDevice.swift */; };
+		9E9A18740E364BADA6D74DA4 /* CameraSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4708540564478986098A3 /* CameraSettings.swift */; };
+		31BF0BD03A244592918E319E /* DoorbellEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7471373EE300488194926985 /* DoorbellEvent.swift */; };
+		B7747802720744CEBC897D63 /* CameraAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F25F19A44746F48A1367AE /* CameraAPIClient.swift */; };
+		91EDC301F42840F387F33C48 /* MJPEGFrameParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6502BC0B30304EA09A7E4F4D /* MJPEGFrameParser.swift */; };
+		95EF4737DD4A40EB95BCB611 /* MJPEGStreamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE9320857574641A4D86CCD /* MJPEGStreamClient.swift */; };
+		BF29FA1B31CE419089E87409 /* RecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A855AB8164F46B7BA37F81F /* RecordingService.swift */; };
+		DD917F1079C94A42B853D803 /* ScreenshotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA52D768AEE4CA292B106FD /* ScreenshotService.swift */; };
+		170BE83D73EA436EB6C53E7F /* DoorbellNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEE628A826740AD92437DCF /* DoorbellNotificationService.swift */; };
+		E78D1303A1B34F3AB592B3BF /* CameraDiscoveryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8652ED7997A45ED98FB0D70 /* CameraDiscoveryService.swift */; };
+		ABE7651F2FC44DB6AD43A58E /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B8E2AC13D747F6820E3B62 /* CameraViewModel.swift */; };
+		2FFBCDA24FDA4FDD95205C17 /* CameraSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DEF0E0A19044FA9AFA6164 /* CameraSettingsViewModel.swift */; };
+		DECAC8A6473643CDB72C4C11 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4C335A9AD648A1A910F570 /* ContentView.swift */; };
+		64BC09EC8BF546D3AAA6F038 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73DE5A65BBC46998AC3CF28 /* CameraView.swift */; };
+		165D1B145A194FAB96DB424B /* CameraSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75CC28A276493CBFDCC927 /* CameraSettingsView.swift */; };
+		25B87BDAFBE24B699D4A562D /* CameraDiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F4A675EE784BF3BD9414E6 /* CameraDiscoveryView.swift */; };
+		90232FEA268949DAABE68CBF /* MJPEGFrameParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FE49AA5F1475899C30401 /* MJPEGFrameParserTests.swift */; };
+		88C84618F8DA4746800C3AB0 /* RecordingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B7BAA1B59449409FB8DEBF /* RecordingServiceTests.swift */; };
+		0F50F0DC4F324EF595B0E715 /* ESPWebCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E81898DA144B0CB0252C5C /* ESPWebCamUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		176EB172A3194CB08BB7C0E9 /* ESPWebCamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESPWebCamApp.swift; sourceTree = "<group>"; };
+		4428C1B09786468BB674FE8B /* CameraDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDevice.swift; sourceTree = "<group>"; };
+		C3E4708540564478986098A3 /* CameraSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettings.swift; sourceTree = "<group>"; };
+		7471373EE300488194926985 /* DoorbellEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorbellEvent.swift; sourceTree = "<group>"; };
+		35F25F19A44746F48A1367AE /* CameraAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAPIClient.swift; sourceTree = "<group>"; };
+		6502BC0B30304EA09A7E4F4D /* MJPEGFrameParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPEGFrameParser.swift; sourceTree = "<group>"; };
+		ECE9320857574641A4D86CCD /* MJPEGStreamClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPEGStreamClient.swift; sourceTree = "<group>"; };
+		8A855AB8164F46B7BA37F81F /* RecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingService.swift; sourceTree = "<group>"; };
+		EAA52D768AEE4CA292B106FD /* ScreenshotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotService.swift; sourceTree = "<group>"; };
+		AFEE628A826740AD92437DCF /* DoorbellNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoorbellNotificationService.swift; sourceTree = "<group>"; };
+		F8652ED7997A45ED98FB0D70 /* CameraDiscoveryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDiscoveryService.swift; sourceTree = "<group>"; };
+		B4B8E2AC13D747F6820E3B62 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		44DEF0E0A19044FA9AFA6164 /* CameraSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsViewModel.swift; sourceTree = "<group>"; };
+		3D4C335A9AD648A1A910F570 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D73DE5A65BBC46998AC3CF28 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		8F75CC28A276493CBFDCC927 /* CameraSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSettingsView.swift; sourceTree = "<group>"; };
+		36F4A675EE784BF3BD9414E6 /* CameraDiscoveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDiscoveryView.swift; sourceTree = "<group>"; };
+		558FE49AA5F1475899C30401 /* MJPEGFrameParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MJPEGFrameParserTests.swift; sourceTree = "<group>"; };
+		00B7BAA1B59449409FB8DEBF /* RecordingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingServiceTests.swift; sourceTree = "<group>"; };
+		34E81898DA144B0CB0252C5C /* ESPWebCamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ESPWebCamUITests.swift; sourceTree = "<group>"; };
+		4211B46D27544751848AEDE8 /* ESPWebCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESPWebCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB433696957A44E89045BF92 /* ESPWebCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESPWebCamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		92EA0CE714364690B74E16BA /* ESPWebCamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESPWebCamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22666591C30241C1B263A9A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DED8346616874EF0A6562635 = {
+			isa = PBXGroup;
+			children = (
+				A9123474CEEA49BB9FD2E7E3 /* ESPWebCam */,
+				9D92BD4D4B6A49FB97F6AD65 /* ESPWebCamTests */,
+				C94CDF57EDC340EEA0FCFBB5 /* ESPWebCamUITests */,
+				B9811CAD22A1462399A1CA0B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B9811CAD22A1462399A1CA0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4211B46D27544751848AEDE8 /* ESPWebCam.app */,
+				FB433696957A44E89045BF92 /* ESPWebCamTests.xctest */,
+				92EA0CE714364690B74E16BA /* ESPWebCamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9123474CEEA49BB9FD2E7E3 /* ESPWebCam */ = {
+			isa = PBXGroup;
+			children = (
+				DF7E41FD269045F3BA952393,
+				2990CC8E3E804E6392A16D68,
+				CFFDFD2DCD6C43C68D32A3A0,
+				182876C4174F44E59072E092,
+				A91A9FB49CF74D6786E7D728,
+				176EB172A3194CB08BB7C0E9 /* ESPWebCamApp.swift */,
+			);
+			path = ESPWebCam;
+			sourceTree = "<group>";
+		};
+		DF7E41FD269045F3BA952393 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4428C1B09786468BB674FE8B /* CameraDevice.swift */,
+				C3E4708540564478986098A3 /* CameraSettings.swift */,
+				7471373EE300488194926985 /* DoorbellEvent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2990CC8E3E804E6392A16D68 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				35F25F19A44746F48A1367AE /* CameraAPIClient.swift */,
+				6502BC0B30304EA09A7E4F4D /* MJPEGFrameParser.swift */,
+				ECE9320857574641A4D86CCD /* MJPEGStreamClient.swift */,
+				8A855AB8164F46B7BA37F81F /* RecordingService.swift */,
+				EAA52D768AEE4CA292B106FD /* ScreenshotService.swift */,
+				AFEE628A826740AD92437DCF /* DoorbellNotificationService.swift */,
+				F8652ED7997A45ED98FB0D70 /* CameraDiscoveryService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CFFDFD2DCD6C43C68D32A3A0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B4B8E2AC13D747F6820E3B62 /* CameraViewModel.swift */,
+				44DEF0E0A19044FA9AFA6164 /* CameraSettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		182876C4174F44E59072E092 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D4C335A9AD648A1A910F570 /* ContentView.swift */,
+				D73DE5A65BBC46998AC3CF28 /* CameraView.swift */,
+				8F75CC28A276493CBFDCC927 /* CameraSettingsView.swift */,
+				36F4A675EE784BF3BD9414E6 /* CameraDiscoveryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A91A9FB49CF74D6786E7D728 /* Resources */ = {isa = PBXGroup; children = (); path = Resources; sourceTree = "<group>"; };
+		9D92BD4D4B6A49FB97F6AD65 /* ESPWebCamTests */ = {
+			isa = PBXGroup;
+			children = (
+				558FE49AA5F1475899C30401 /* MJPEGFrameParserTests.swift */,
+				00B7BAA1B59449409FB8DEBF /* RecordingServiceTests.swift */,
+			);
+			path = ESPWebCamTests;
+			sourceTree = "<group>";
+		};
+		C94CDF57EDC340EEA0FCFBB5 /* ESPWebCamUITests */ = {isa = PBXGroup; children = (34E81898DA144B0CB0252C5C /* ESPWebCamUITests.swift */,); path = ESPWebCamUITests; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC0DA400D37948A882688FBF /* ESPWebCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BAB270F0E5AC487FB1731851 /* Build configuration list for PBXNativeTarget "ESPWebCam" */;
+			buildPhases = (
+				3BD627B260E8417D918D3215 /* Sources */,
+				22666591C30241C1B263A9A5 /* Frameworks */,
+				0669106191394F0C9CD58FEE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ESPWebCam;
+			productName = ESPWebCam;
+			productReference = 4211B46D27544751848AEDE8 /* ESPWebCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		067B8D2197364A0BA2859A90 /* ESPWebCamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0638D5B0B2324E61A2162B95;
+			buildPhases = (3C26DBAFACF540AEA4AC2DBD /* Sources */,);
+			buildRules = ();
+			dependencies = ();
+			name = ESPWebCamTests;
+			productName = ESPWebCamTests;
+			productReference = FB433696957A44E89045BF92;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EC6643AD2112410082DC62A6 /* ESPWebCamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00C9B574CC2448AAB3AD9379;
+			buildPhases = (689C885AE86A454EACA40553 /* Sources */,);
+			buildRules = ();
+			dependencies = ();
+			name = ESPWebCamUITests;
+			productName = ESPWebCamUITests;
+			productReference = 92EA0CE714364690B74E16BA;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08CA058215C9485CB28ABB05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					BC0DA400D37948A882688FBF = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					067B8D2197364A0BA2859A90 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = BC0DA400D37948A882688FBF;
+					};
+					EC6643AD2112410082DC62A6 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = BC0DA400D37948A882688FBF;
+					};
+				};
+			};
+			buildConfigurationList = A8334DDD2E284FA0927A45FC /* Build configuration list for PBXProject "ESPWebCam" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DED8346616874EF0A6562635;
+			productRefGroup = B9811CAD22A1462399A1CA0B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC0DA400D37948A882688FBF /* ESPWebCam */,
+				067B8D2197364A0BA2859A90 /* ESPWebCamTests */,
+				EC6643AD2112410082DC62A6 /* ESPWebCamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0669106191394F0C9CD58FEE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3BD627B260E8417D918D3215 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+					6B3ECAD8E81A4CE38C5F20AB /* ESPWebCamApp.swift in Sources */,
+					4AFAB3E4BF1847F1840750A1 /* CameraDevice.swift in Sources */,
+					9E9A18740E364BADA6D74DA4 /* CameraSettings.swift in Sources */,
+					31BF0BD03A244592918E319E /* DoorbellEvent.swift in Sources */,
+					B7747802720744CEBC897D63 /* CameraAPIClient.swift in Sources */,
+					91EDC301F42840F387F33C48 /* MJPEGFrameParser.swift in Sources */,
+					95EF4737DD4A40EB95BCB611 /* MJPEGStreamClient.swift in Sources */,
+					BF29FA1B31CE419089E87409 /* RecordingService.swift in Sources */,
+					DD917F1079C94A42B853D803 /* ScreenshotService.swift in Sources */,
+					170BE83D73EA436EB6C53E7F /* DoorbellNotificationService.swift in Sources */,
+					E78D1303A1B34F3AB592B3BF /* CameraDiscoveryService.swift in Sources */,
+					ABE7651F2FC44DB6AD43A58E /* CameraViewModel.swift in Sources */,
+					2FFBCDA24FDA4FDD95205C17 /* CameraSettingsViewModel.swift in Sources */,
+					DECAC8A6473643CDB72C4C11 /* ContentView.swift in Sources */,
+					64BC09EC8BF546D3AAA6F038 /* CameraView.swift in Sources */,
+					165D1B145A194FAB96DB424B /* CameraSettingsView.swift in Sources */,
+					25B87BDAFBE24B699D4A562D /* CameraDiscoveryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C26DBAFACF540AEA4AC2DBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+					90232FEA268949DAABE68CBF /* MJPEGFrameParserTests.swift in Sources */,
+					88C84618F8DA4746800C3AB0 /* RecordingServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		689C885AE86A454EACA40553 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F50F0DC4F324EF595B0E715 /* ESPWebCamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		10E66A5F73644FEEA9AF089A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DC5F2065EFBF41A395B084A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EC91CA30CFDF45D7BC4F7CFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSTCAT_COMPILER_SKIP_APP_STORE_DEPLOYMENT = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ESPWebCam;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ESPWebCam connects to your ESP32 camera on the local network.";
+				INFOPLIST_KEY_NSBonjourServices = "_espwebcam-stream._tcp";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ESPWebCam saves screenshots and recordings to your photo library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LE_SWIFT_VERSION = 5.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		973FEB7F1EE2462D9CEF34CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ESPWebCam;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "ESPWebCam connects to your ESP32 camera on the local network.";
+				INFOPLIST_KEY_NSBonjourServices = "_espwebcam-stream._tcp";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "ESPWebCam saves screenshots and recordings to your photo library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		694F95242C4447C49327DFCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ESPWebCam.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ESPWebCam";
+			};
+			name = Debug;
+		};
+		D3A1BF27D2EB4BD6928E3887 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ESPWebCam.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ESPWebCam";
+			};
+			name = Release;
+		};
+		019EFDD9C402409FB15C834D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ESPWebCam;
+			};
+			name = Debug;
+		};
+		679031451EBE4EB78152F0ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.kjdev.ESPWebCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = ESPWebCam;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A8334DDD2E284FA0927A45FC /* Build configuration list for PBXProject "ESPWebCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10E66A5F73644FEEA9AF089A /* Debug */,
+				DC5F2065EFBF41A395B084A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BAB270F0E5AC487FB1731851 /* Build configuration list for PBXNativeTarget "ESPWebCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC91CA30CFDF45D7BC4F7CFC /* Debug */,
+				973FEB7F1EE2462D9CEF34CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0638D5B0B2324E61A2162B95 /* Build configuration list for PBXNativeTarget "ESPWebCamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				694F95242C4447C49327DFCC /* Debug */,
+				D3A1BF27D2EB4BD6928E3887 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00C9B574CC2448AAB3AD9379 /* Build configuration list for PBXNativeTarget "ESPWebCamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				019EFDD9C402409FB15C834D /* Debug */,
+				679031451EBE4EB78152F0ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08CA058215C9485CB28ABB05 /* Project object */;
+}

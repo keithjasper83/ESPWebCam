@@ -1,0 +1,435 @@
+openapi: "3.1.0"
+
+info:
+  title: ESPWebCam API
+  version: "1.0.0"
+  description: |
+    REST API served by the ESPWebCam firmware running on a Freenove ESP32-S3 WROOM.
+
+    ## Servers
+    The API server runs on port **80**. The MJPEG stream runs on port **81**.
+
+    ## Base URL
+    ```
+    http://espwebcam.local/api/v1
+    http://<ip-address>/api/v1
+    ```
+
+    ## Response Envelope
+    All endpoints return a consistent envelope:
+
+    **Success:**
+    ```json
+    { "ok": true, "data": { ... } }
+    ```
+
+    **Error:**
+    ```json
+    {
+      "ok": false,
+      "error": { "code": "ERROR_CODE", "message": "Human-readable description" }
+    }
+    ```
+
+servers:
+  - url: http://espwebcam.local/api/v1
+    description: mDNS (local network)
+  - url: http://{host}/api/v1
+    description: Direct IP
+    variables:
+      host:
+        default: "192.168.1.100"
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Liveness probe
+      description: Returns firmware health. Use for polling and connection checks.
+      responses:
+        "200":
+          description: Device is alive
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessEnvelope"
+              example:
+                ok: true
+                data:
+                  status: "ok"
+                  uptime: 3601
+                  freeHeap: 245760
+                  wifiConnected: true
+                  streamClients: 1
+                  firmwareVersion: "2.0.0"
+                  apiVersion: "v1"
+
+  /status:
+    get:
+      operationId: getStatus
+      summary: Detailed device status
+      responses:
+        "200":
+          description: Status object
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessEnvelope"
+              example:
+                ok: true
+                data:
+                  deviceId: "front-door-camera"
+                  hostname: "espwebcam"
+                  firmwareVersion: "2.0.0"
+                  apiVersion: "v1"
+                  uptime: 3601
+                  freeHeap: 245760
+                  minFreeHeap: 220000
+                  rssi: -62
+                  ipAddress: "192.168.1.100"
+                  wifiConnected: true
+                  streamClients: 1
+
+  /camera/settings:
+    get:
+      operationId: getCameraSettings
+      summary: Get current camera settings
+      description: Returns the settings currently applied on the sensor hardware.
+      responses:
+        "200":
+          description: Current settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CameraSettingsEnvelope"
+        "500":
+          description: Camera not ready
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+    put:
+      operationId: updateCameraSettings
+      summary: Update camera settings
+      description: |
+        Applies one or more camera settings. Fields not included in the request
+        are left unchanged. Returns the final applied values.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CameraSettingsRequest"
+      responses:
+        "200":
+          description: Settings applied – response contains final applied values
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CameraSettingsEnvelope"
+        "400":
+          description: Invalid settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+              examples:
+                invalidQuality:
+                  value:
+                    ok: false
+                    error:
+                      code: "INVALID_CAMERA_SETTING"
+                      message: "jpegQuality must be between 4 and 63"
+        "500":
+          description: Camera not initialised
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+  /camera/snapshot:
+    get:
+      operationId: getCameraSnapshot
+      summary: Capture a single JPEG still image
+      description: |
+        Returns the highest-quality available JPEG frame directly from the sensor.
+        Prefer this endpoint over extracting a frame from the stream for screenshots.
+      responses:
+        "200":
+          description: JPEG image
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        "500":
+          description: Capture failed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorEnvelope"
+
+  /camera/stream:
+    get:
+      operationId: getCameraStream
+      summary: MJPEG live stream (port 81)
+      description: |
+        Multipart MJPEG stream. This endpoint is served on **port 81**
+        (`http://<host>:81/stream`) to isolate streaming from the API server.
+
+        Also available at `http://<host>:81/api/v1/camera/stream`.
+
+        Content-Type: `multipart/x-mixed-replace;boundary=123456789000000000000987654321`
+
+        Each JPEG part includes:
+        - `Content-Type: image/jpeg`
+        - `Content-Length: <bytes>`
+        - `X-Timestamp: <tv_sec>.<tv_usec>`
+
+        **Note**: The `X-Framerate: 60` response header is advisory. Actual
+        frame rate varies with resolution and network conditions. Always use
+        `X-Timestamp` or frame arrival time for video PTS, not a fixed frame rate.
+      responses:
+        "200":
+          description: MJPEG multipart stream
+          content:
+            multipart/x-mixed-replace:
+              schema:
+                type: string
+                format: binary
+
+  /doorbell/status:
+    get:
+      operationId: getDoorbellStatus
+      summary: Last doorbell event
+      responses:
+        "200":
+          description: Doorbell status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DoorbellStatusEnvelope"
+              examples:
+                withEvent:
+                  value:
+                    ok: true
+                    data:
+                      totalEvents: 3
+                      lastEvent:
+                        eventType: "doorbell.pressed"
+                        eventId: "front-door-camera-3"
+                        deviceId: "front-door-camera"
+                        occurredAtMs: 12345678
+                        sequence: 3
+                noEvent:
+                  value:
+                    ok: true
+                    data:
+                      totalEvents: 0
+                      lastEvent: null
+
+  /doorbell/test:
+    post:
+      operationId: testDoorbell
+      summary: Trigger a synthetic doorbell event
+      description: Fires a test doorbell event without physical button press. Useful for testing notifications.
+      responses:
+        "200":
+          description: Event triggered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessEnvelope"
+              example:
+                ok: true
+                data:
+                  triggered: true
+
+components:
+  schemas:
+    SuccessEnvelope:
+      type: object
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          enum: [true]
+        data:
+          type: object
+
+    ErrorEnvelope:
+      type: object
+      required: [ok, error]
+      properties:
+        ok:
+          type: boolean
+          enum: [false]
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+              example: "INVALID_CAMERA_SETTING"
+            message:
+              type: string
+              description: Human-readable description
+              example: "jpegQuality must be between 4 and 63"
+
+    CameraSettings:
+      type: object
+      required:
+        - frameSize
+        - frameSizeName
+        - jpegQuality
+        - brightness
+        - contrast
+        - saturation
+        - aeLevel
+        - hmirror
+        - vflip
+        - sensorPid
+      properties:
+        frameSize:
+          type: integer
+          description: "framesize_t enum integer value"
+          minimum: 0
+          maximum: 13
+          example: 8
+        frameSizeName:
+          type: string
+          description: "Human-readable frame size name"
+          example: "VGA"
+        jpegQuality:
+          type: integer
+          description: "JPEG quality (4=highest, 63=lowest)"
+          minimum: 4
+          maximum: 63
+          example: 12
+        brightness:
+          type: integer
+          minimum: -2
+          maximum: 2
+          example: 1
+        contrast:
+          type: integer
+          minimum: -2
+          maximum: 2
+          example: 0
+        saturation:
+          type: integer
+          minimum: -2
+          maximum: 2
+          example: 0
+        aeLevel:
+          type: integer
+          description: "Exposure compensation"
+          minimum: -5
+          maximum: 5
+          example: -3
+        hmirror:
+          type: integer
+          minimum: 0
+          maximum: 1
+          example: 1
+        vflip:
+          type: integer
+          minimum: 0
+          maximum: 1
+          example: 0
+        sensorPid:
+          type: string
+          description: "Sensor product ID hex string"
+          example: "0x2641"
+
+    CameraSettingsRequest:
+      type: object
+      description: "All fields optional. Unspecified fields are unchanged."
+      properties:
+        frameSize:
+          type: integer
+          minimum: 0
+          maximum: 13
+        jpegQuality:
+          type: integer
+          minimum: 4
+          maximum: 63
+        brightness:
+          type: integer
+          minimum: -2
+          maximum: 2
+        contrast:
+          type: integer
+          minimum: -2
+          maximum: 2
+        saturation:
+          type: integer
+          minimum: -2
+          maximum: 2
+        aeLevel:
+          type: integer
+          minimum: -5
+          maximum: 5
+        hmirror:
+          type: integer
+          minimum: 0
+          maximum: 1
+        vflip:
+          type: integer
+          minimum: 0
+          maximum: 1
+
+    CameraSettingsEnvelope:
+      type: object
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          enum: [true]
+        data:
+          $ref: "#/components/schemas/CameraSettings"
+
+    DoorbellEvent:
+      type: object
+      required: [eventType, eventId, deviceId, occurredAtMs, sequence]
+      properties:
+        eventType:
+          type: string
+          enum: ["doorbell.pressed"]
+        eventId:
+          type: string
+          description: "<deviceId>-<sequence> – use as idempotency key"
+          example: "front-door-camera-17"
+        deviceId:
+          type: string
+          example: "front-door-camera"
+        occurredAtMs:
+          type: integer
+          description: "millis() at time of confirmed button press"
+          example: 12345678
+        sequence:
+          type: integer
+          description: "Monotonically increasing per device boot cycle"
+          minimum: 1
+          example: 17
+
+    DoorbellStatusEnvelope:
+      type: object
+      required: [ok, data]
+      properties:
+        ok:
+          type: boolean
+          enum: [true]
+        data:
+          type: object
+          required: [totalEvents, lastEvent]
+          properties:
+            totalEvents:
+              type: integer
+              minimum: 0
+            lastEvent:
+              oneOf:
+                - $ref: "#/components/schemas/DoorbellEvent"
+                - type: "null"
