@@ -10,6 +10,9 @@ on:
     paths:
       - "ios/**"
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: macos-14
