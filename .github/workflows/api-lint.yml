@@ -1,0 +1,25 @@
+name: API Lint
+
+on:
+  push:
+    paths:
+      - "shared/openapi.yaml"
+      - ".github/workflows/api-lint.yml"
+  pull_request:
+    paths:
+      - "shared/openapi.yaml"
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Spectral
+        run: npm install -g @stoplight/spectral-cli
+
+      - name: Lint OpenAPI spec
+        run: spectral lint shared/openapi.yaml

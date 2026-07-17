@@ -1,0 +1,42 @@
+name: iOS Build and Test
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "ios/**"
+      - ".github/workflows/ios-build.yml"
+  pull_request:
+    paths:
+      - "ios/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode 15
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app
+
+      - name: Build
+        run: |
+          xcodebuild build \
+            -project ios/ESPWebCam.xcodeproj \
+            -scheme ESPWebCam \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
+            | xcpretty
+
+      - name: Test
+        run: |
+          xcodebuild test \
+            -project ios/ESPWebCam.xcodeproj \
+            -scheme ESPWebCam \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO \
+            | xcpretty

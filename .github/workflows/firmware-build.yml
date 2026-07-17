@@ -1,0 +1,44 @@
+name: Firmware Build
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "firmware/**"
+      - ".github/workflows/firmware-build.yml"
+  pull_request:
+    paths:
+      - "firmware/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Create secrets.h from example
+        # CI uses placeholder credentials – no real secrets here
+        run: cp firmware/include/secrets.h.example firmware/include/secrets.h
+
+      - name: Build firmware
+        working-directory: firmware
+        run: pio run -e freenove_esp32_s3_wroom
+
+      - name: Upload firmware artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-binary
+          path: firmware/.pio/build/freenove_esp32_s3_wroom/firmware.bin
+          if-no-files-found: warn
